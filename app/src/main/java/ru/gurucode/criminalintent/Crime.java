@@ -18,6 +18,10 @@ public class Crime {
         this.mDate = new Date();
     }
 
+    public UUID getId() {
+        return mId;
+    }
+
     public String getmTitle() {
         return mTitle;
     }
