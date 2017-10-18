@@ -2,6 +2,7 @@ package ru.gurucode.criminalintent;
 
 import android.content.Context;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,7 +23,13 @@ class CrimeLab {
     }
 
     private CrimeLab(Context context) {
-
+        mCrimes = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            Crime crime = new Crime();
+            crime.setmTitle("Crime #" + i);
+            crime.setmSolved(i % 2 == 0);
+            mCrimes.add(crime);
+        }
     }
 
 
