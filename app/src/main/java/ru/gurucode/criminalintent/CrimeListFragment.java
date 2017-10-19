@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 import java.util.function.ToDoubleBiFunction;
@@ -53,10 +55,32 @@ public class CrimeListFragment extends Fragment {
         mCrimeRecyclerView.setAdapter(mAdapter);
     }
 
-    //ВХ - view для элемента
-    private class CrimeHolder extends RecyclerView.ViewHolder {
+    //ВХ - view для элемента. Заполняет поля значениями.
+    private class CrimeHolder extends RecyclerView.ViewHolder implements View
+            .OnClickListener{
+
+        private TextView mTitleTextView;
+        private TextView mDateTextView;
+        private Crime mCrime;
+
         public CrimeHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_crime, parent, false));
+            itemView.setOnClickListener(this);
+            mTitleTextView = (TextView) itemView.findViewById(R.id.crime_title);
+            mDateTextView = (TextView) itemView.findViewById(R.id.crime_date);
+        }
+
+        public void bind(Crime crime){
+            mCrime = crime;
+            mTitleTextView.setText(mCrime.getmTitle());
+            mDateTextView.setText(mCrime.getmDate().toString());
+        }
+
+        //Реализуем View.OnClickListener
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(getActivity(), mCrime.getmTitle(),
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -76,10 +100,11 @@ public class CrimeListFragment extends Fragment {
             return new CrimeHolder(layoutInflater, parent);
         }
 
+        //Связь VH и конкретных данных.
         @Override
         public void onBindViewHolder(CrimeHolder holder, int position) {
-            //Crime crime = mCrimes.get(position);
-            //holder.bind(crime);
+            Crime crime = mCrimes.get(position);
+            holder.bind(crime); //передадим данные в VH
         }
 
         @Override
