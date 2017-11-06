@@ -5,17 +5,18 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import ru.gurucode.criminalintent.database.CrimeBaseHelper;
-import ru.gurucode.criminalintent.database.CrimeCursorWrapper;
-import ru.gurucode.criminalintent.database.CrimeDbSchema;
-import ru.gurucode.criminalintent.database.CrimeDbSchema.CrimeTable;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static ru.gurucode.criminalintent.database.CrimeDbSchema.CrimeTable.*;
-import static ru.gurucode.criminalintent.database.CrimeDbSchema.CrimeTable.Cols.*;
+import ru.gurucode.criminalintent.database.CrimeBaseHelper;
+import ru.gurucode.criminalintent.database.CrimeCursorWrapper;
+import ru.gurucode.criminalintent.database.CrimeDbSchema.CrimeTable;
+
+import static ru.gurucode.criminalintent.database.CrimeDbSchema.CrimeTable.Cols.DATE;
+import static ru.gurucode.criminalintent.database.CrimeDbSchema.CrimeTable.Cols.SOLVED;
+import static ru.gurucode.criminalintent.database.CrimeDbSchema.CrimeTable.Cols.TITLE;
+import static ru.gurucode.criminalintent.database.CrimeDbSchema.CrimeTable.Cols.UUID;
 
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
